@@ -116,13 +116,10 @@ router.delete('/folders/:id', (req, res, next) => {
 
   /*
    * BONUS CHALLENGE:
-   * Currently, deleting a folder performs a SQL-style cascading deleting on Notes.
-   * IOW, deleting a folder deletes all the associated Notes. The challenge is to
-   * implement No-SQL equivalents to the other SQL-style ON DELETE restrictions.
    *
-   * - Create a No-SQL equivalent to ON DELETE SET NULL. IOW, when a user deletes
-   *   a folder, then set the folderId to NULL or remove the folderId property
-   *   from all the associated notes
+   * - Create a No-SQL equivalent to ON DELETE SET NULL. When a user deletes a
+   *   folder, set the folderId to NULL (or remove the folderId property)
+   *   on all the associated notes
    *
    *   const noteRemovePromise = Note.updateMany(
    *      { folderId: id },

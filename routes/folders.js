@@ -129,14 +129,8 @@ router.delete('/folders/:id', (req, res, next) => {
    */
 
   Promise.all([folderRemovePromise, noteRemovePromise])
-    .then(resultsArray => {
-      const folderResult = resultsArray[0];
-
-      if (folderResult) {
-        res.status(204).end();
-      } else {
-        next();
-      }
+    .then(() => {
+      res.status(204).end();
     })
     .catch(err => {
       next(err);

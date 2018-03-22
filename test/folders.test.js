@@ -282,16 +282,6 @@ describe('Noteful API - Folders', function () {
         });
     });
 
-    it('should respond with a 404 for an invalid id', function () {
-
-      return chai.request(app)
-        .delete('/api/folders/AAAAAAAAAAAAAAAAAAAAAAAA')
-        .catch(err => err.response)
-        .then(res => {
-          expect(res).to.have.status(404);
-        });
-    });
-
   });
 
 });

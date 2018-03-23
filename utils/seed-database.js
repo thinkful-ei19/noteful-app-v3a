@@ -16,6 +16,7 @@ mongoose.connect(MONGODB_URI)
       Note.insertMany(seedNotes),
       Folder.insertMany(seedFolders),
       Folder.createIndexes(),
+      Tag.createIndexes(),
     ]);
   })
   .then(() => mongoose.disconnect())

@@ -4,25 +4,17 @@
 $(document).ready(function () {
   noteful.bindEventListeners();
 
-  api.search('/api/notes')
-    .then(response => {
-      store.notes = response;
+  Promise.all([
+    api.search('/v3/notes'),
+    api.search('/v3/folders'),
+    api.search('/v3/tags')
+  ])
+    .then(([notes, folders, tags]) => {
+      store.notes = notes;
+      store.folders = folders;
+      store.tags = tags;
       noteful.render();
     });
-
-  console.log('Get folders, coming soon...');
-  // api.search('/api/folders')
-  //   .then(response => {
-  //     store.folders = response;
-  //     noteful.render();
-  //   });
-
-  console.log('Get tags, coming soon...');
-  // api.search('/api/tags')
-  //   .then(response => {
-  //     store.tags = response;
-  //     noteful.render();
-  //   });
 
 });
 
